@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <title>View Clients</title>
+    <!-- Bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+    <!-- DataTable -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            background-color: #3C5EFF;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat';
+        }
+
+        h1 {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            text-align: center;
+            font-family: Montserrat;
+            font-size: 40px;
+            font-weight: normal;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            margin: 0 auto;
+            width: auto;
+            background-color: #91B4FF;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .special-word {
+            font-weight: bold;
+            color: #929292;
+        }
+
+        label {
+            color: white;
+            font-family: Montserrat;
+        }
+
+        table.table td,
+        table.table th {
+            color: white;
+            font-family: Montserrat;
+        }
+
+        .table.table-striped tbody tr:nth-child(odd) td,
+        .table.table-striped tbody tr:nth-child(odd) th {
+            color: gray;
+        }
+
+        caption {
+            color: #474747;
+        }
+
+        .dataTables_info {
+            color: white;
+            font-family: Montserrat;
+        }
+
+        .pagination {
+            color: white;
+            font-family: Montserrat;
+        }
+
+        .btn-primary {
+            background-color: #2C2C2C;
+            border-color: #2C2C2C;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            max-width: 100%;
+        }
+
+        .home-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .home-btn {
+            margin-right: 10px;
+            display: inline-block;
+            height: 20%;
+            padding: 10px 20px;
+            background-color: #91B4FF;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 20%;
+            max-width: 80px;
+            transition: background-color 0.3s, font-size 0.3s, transform 0.3s;
+        }
+
+        .home-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .home-icon {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+        body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat';
+}
+
+header {
+    position: relative;
+}
+
+.encabezado-container {
+    position: relative;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.barra-inferior {
+    width: 100%;
+    background-color: #3C5EFF;
+    padding: 0px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.boton-ingresar {
+    background-color: transparent;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    font-family: 'Montserrat';
+    transition: background-color 0.3s, font-size 0.3s;
+}
+
+.boton-ingresar:hover {
+    background-color: #9B3DFF;
+    font-size: 24px;
+}
+
+    </style>
+</head>
+<header>
+    <div class="encabezado-container">
+        <img src="https://i.ibb.co/P1ytQXV/header.jpg" alt="Encabezado de la página">
+    </div>
+    
+    <div class="barra-inferior">
+        <button class="boton-ingresar">Inicio</button>
+        <button class="boton-ingresar">Profesores</button>
+        <button class="boton-ingresar">Coordinadores</button>
+    </div>
+
+
+</header>
+<body>
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 table-responsive">
+                <table id="datatable_users" class="table table-striped">
+                    <caption>
+                        .
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th class="centered">#</th>
+                            <th class="centered">Nombre</th>
+                            <th class="centered">Teléfono</th>
+                            <th class="centered">Correo</th>
+                            <th class="centered">Status</th>
+                            <th class="centered">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody_users">
+                        {% for client in clients %}
+                        <tr>
+                            <td>{{ client.id  }}</td>
+                            <td>{{ client.name}}</td>
+                            <td>{{ client.phone_no }}</td>
+                            <td>{{ client.email }}</td>
+                            <td><i class="fa-solid fa-check" style="color: green;"></i></td>
+                            <td>
+                                <button class="btn btn-sm btn-danger" onclick="deleteClient('{{ client.phone_no }}')"><i class="fa-solid fa-trash-can"></i></button>
+                                <button class="btn btn-sm btn-info" onclick="editClient('{{ client.phone_no }}')"><i class="fa-solid fa-pen-to-square"></i></button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- DataTable -->
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <!-- Custom JS -->
+</body>
+</html>

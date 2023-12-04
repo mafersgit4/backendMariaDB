@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat';
+        }
+
+        header {
+            position: relative;
+        }
+
+        .encabezado-container {
+            position: relative;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .barra-inferior {
+            width: 100%;
+            background-color: #3C5EFF;
+            padding: 0px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+
+        .boton-ingresar {
+            background-color: transparent;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 20px;
+            font-family: 'Montserrat';
+            transition: background-color 0.3s, font-size 0.3s;
+        }
+
+        .boton-ingresar:hover {
+            background-color: #9B3DFF;
+            font-size: 24px;
+        }
+
+        .cuadrados-container {
+            text-align: center;
+        }
+
+        .cuadrado {
+            margin: 10px;
+            margin-top: 30px;
+            background-color: #3C5EFF;
+            display: inline-block;
+            width: 300px;
+            height: 400px;
+            box-sizing: border-box;
+            overflow: hidden;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .cuadrado:hover {
+            transform: scale(1.1);
+        }
+
+        .cuadrado .contenido {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+        }
+
+        .cuadrado img {
+            width: 60%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .cuadrado:last-child {
+            margin-right: 0;
+        }
+
+        .cuadrado:nth-child(1) {
+            background-color: #91B4FF;
+        }
+
+        .cuadrado:nth-child(2) {
+            background-color: #FF05B0;
+        }
+
+        .cuadrado:nth-child(3) {
+            background-color: #3C5EFF;
+        }
+
+        .texto-adicional {
+            padding: 20px;
+            text-align: center;
+            font-weight: bold;
+            color: black;
+            margin-top: 20px;
+            font-family: 'Montserrat';
+        }
+
+        .paso1, .paso2, .paso3 {
+            width: 100%;
+            height: 200px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+        }
+
+        .como-funciona {
+            font-weight: bold;
+            font-size: 50px;
+        }
+    </style>
+    <title>Seguimiento a profesores</title>
+</head>
+<body>
+
+    <header>
+        <div class="encabezado-container">
+            <img src="https://i.ibb.co/P1ytQXV/header.jpg" alt="Encabezado de la página">
+        </div>
+        
+        <div class="barra-inferior">
+            <button class="boton-ingresar">Inicio</button>
+            <button class="boton-ingresar">Profesores</button>
+            <button class="boton-ingresar">Coordinadores</button>
+        </div>
+
+
+    </header>
+
+    <div class="cuadrados-container">
+        <div class="cuadrado">
+            <div class="contenido">
+                <h2>Encuentra información de tus profesores</h2>
+                <img src="https://i.ibb.co/j8HJXxH/profesor.png" alt="Descripción de la imagen">
+            </div>
+        </div>
+        <div class="cuadrado">
+            <div class="contenido">
+                <h2>Conoce sus resultados en el IAE</h2>
+                <img src="https://i.ibb.co/7tT6W8h/computadora.png" alt="Descripción de la imagen">
+            </div>
+        </div>
+        <div class="cuadrado">
+            <div class="contenido">
+                <h2>Accede a sus datos de contacto</h2>
+                <img src="https://i.ibb.co/8BSs8rg/buscar.png" alt="Descripción de la imagen">
+            </div>
+        </div>
+        
+    </div>
+    
+    <div class="texto-adicional">
+        <h1>En esta plataforma encontrarás toda la información de todos tus profesores.</h1>
+        <br>
+        <h1 class="como-funciona">¿Cómo funciona?</h1>
+    </div>
+
+    <div class="paso1">
+        <p>1. Ingresa con tus credenciales ITESO</p>
+    </div>
+    <div class="paso2">
+        <p>2. Obtén información de todos tus profesores y coordinadores</p>
+    </div>
+    <div class="paso3">
+        <p>3. Si tienes algún comentario de un docente, déjalo en nuestra plataforma</p>
+    </div>
+
+</body>
+
+</html>

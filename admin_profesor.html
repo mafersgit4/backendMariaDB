@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <title>View Clients</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        body {
+            background-color: #3C5EFF;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat';
+        }
+
+        h1 {
+            margin-top: 50px;
+            margin-bottom: 50px;
+            text-align: center;
+            font-family: Montserrat;
+            font-size: 40px;
+            font-weight: normal;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            margin: 0 auto;
+            width: auto;
+            background-color: #91B4FF;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .special-word {
+            font-weight: bold;
+            color: #929292;
+        }
+
+        label {
+            color: white;
+            font-family: Montserrat;
+        }
+
+        table.table td,
+        table.table th {
+            color: white;
+            font-family: Montserrat;
+        }
+
+        .table.table-striped tbody tr:nth-child(odd) td,
+        .table.table-striped tbody tr:nth-child(odd) th {
+            color: gray;
+        }
+
+        caption {
+            color: #474747;
+        }
+
+        .dataTables_info {
+            color: white;
+            font-family: Montserrat;
+        }
+
+        .pagination {
+            color: white;
+            font-family: Montserrat;
+        }
+
+        .btn-primary {
+            background-color: #2C2C2C;
+            border-color: #2C2C2C;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            max-width: 100%;
+        }
+
+        .home-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .home-btn {
+            margin-right: 10px;
+            display: inline-block;
+            height: 20%;
+            padding: 10px 20px;
+            background-color: #91B4FF;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 20%;
+            max-width: 80px;
+            transition: background-color 0.3s, font-size 0.3s, transform 0.3s;
+        }
+
+        .home-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .home-icon {
+            height: 100%;
+            width: 100%;
+            object-fit: contain;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="home-container">
+        <button class="home-btn" onclick="goHome()">
+            <img src="https://i.ibb.co/3pnD6KV/home-icon.png" class="home-icon" alt="Home" />
+        </button>
+        <h1>Profesores</h1>
+    </div>
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 table-responsive">
+                <table id="datatable_users" class="table table-striped">
+                    <caption>
+                        .
+                    </caption>
+                    <thead>
+                        <tr>
+                            <th class="centered">#</th>
+                            <th class="centered">Nombre</th>
+                            <th class="centered">Teléfono</th>
+                            <th class="centered">Correo</th>
+                            <th class="centered">Status</th>
+                            <th class="centered">Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody_users">
+                        {% for profesor in profesors %}
+                        <tr>
+                            <td>{{ profesor.id  }}</td>
+                            <td>{{ profesor.name}}</td>
+                            <td>{{ profesor.phone_no }}</td>
+                            <td>{{ profesor.email }}</td>
+                            <td><i class="fa-solid fa-check" style="color: green;"></i></td>
+                            <td>
+                                <button class="btn btn-sm btn-danger" onclick="deleteClient('{{ client.phone_no }}')"><i class="fa-solid fa-trash-can"></i></button>
+                                <button class="btn btn-sm btn-info" onclick="editClient('{{ client.phone_no }}')"><i class="fa-solid fa-pen-to-square"></i></button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="main.js"></script>
+    
+</body>
+</html>
